@@ -6,10 +6,10 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
 
-    player_name = models.CharField(max_length = 200)
+    player_name = models.CharField(max_length = 200, default="player_one")
     points = models.IntegerField(default = 0)
     level = models.IntegerField(default = 0)
 
     def __str__(self):
-        return self.user.username
+        return self.player_name
 
