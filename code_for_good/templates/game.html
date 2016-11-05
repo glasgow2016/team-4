@@ -15,7 +15,11 @@
 			var ctx = canvas.getContext("2d");
 			canvas.width = 512;
 			canvas.height = 480;
+
+
 			document.body.appendChild(canvas);
+
+
 
 
 			// Background image
@@ -34,12 +38,26 @@
 			};
 			driverImage.src = "driver.jpg";
 
+			// start image
+			var startReady = false;
+			var startImage = new Image();
+			canvas.addEventListener('click', function() { console.log("test");}, false);
+			startImage.onload = function () {
+				startReady = true;
+			};
+			startImage.src = "start.png";
+
 
 			var driver = {
-				speed: 256, // movement in pixels per second
 				x: 256,
 				y: 240
 			};
+
+			var start = {
+				x: 106,
+				y: 40
+			};
+
 
 
 			// Draw everything
@@ -48,32 +66,28 @@
 					ctx.drawImage(bgImage, 0, 0);
 				};
 
-				if (driverReady) {
-					ctx.drawImage(driverImage, driver.x, driver.y);
-				}
-				// Score
-				// ctx.fillStyle = "rgb(250, 250, 250)";
-				// ctx.font = "24px Helvetica";
-				// ctx.textAlign = "left";
-				// ctx.textBaseline = "top";
-				// ctx.fillText("Monsterrs caught: " + monstersCaught, 32, 32);
+				if (startReady) {
+					ctx.drawImage(startImage, start.x, start.y);
+
+				};
+
+				// if (driverReady) {
+				// 	ctx.drawImage(driverImage, driver.x, driver.y);
+				// }
 				};
 
 			// The main game loop
 			var main = function () {
-				var now = Date.now();
 
 				render();
 
-				// Request to do this again ASAP
 				requestAnimationFrame(main);
 			};
 
-			// Let's play this game!
+
 			var then = Date.now();
 			$( document ).ready(function() {
 			    console.log( "ready!" );
-				// reset();
 				main();
 			});
 
