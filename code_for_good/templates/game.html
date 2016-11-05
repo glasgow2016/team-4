@@ -1,0 +1,85 @@
+
+
+<html>
+
+	<head>
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+		<script src="https://code.createjs.com/easeljs-0.8.2.min.js">  </script>
+
+	</head>
+    <body>
+
+		<script>
+			// Create the canvas
+			var canvas = document.createElement("canvas");
+			var ctx = canvas.getContext("2d");
+			canvas.width = 512;
+			canvas.height = 480;
+			document.body.appendChild(canvas);
+
+
+			// Background image
+			var bgReady = false;
+			var bgImage = new Image();
+			bgImage.onload = function () {
+				bgReady = true;
+			};
+			bgImage.src = "bg.jpg";
+
+			// person image
+			var driverReady = false;
+			var driverImage = new Image();
+			driverImage.onload = function () {
+				driverReady = true;
+			};
+			driverImage.src = "driver.jpg";
+
+
+			var driver = {
+				speed: 256, // movement in pixels per second
+				x: 256,
+				y: 240
+			};
+
+
+			// Draw everything
+			var render = function () {
+				if (bgReady) {
+					ctx.drawImage(bgImage, 0, 0);
+				};
+
+				if (driverReady) {
+					ctx.drawImage(driverImage, driver.x, driver.y);
+				}
+				// Score
+				// ctx.fillStyle = "rgb(250, 250, 250)";
+				// ctx.font = "24px Helvetica";
+				// ctx.textAlign = "left";
+				// ctx.textBaseline = "top";
+				// ctx.fillText("Monsterrs caught: " + monstersCaught, 32, 32);
+				};
+
+			// The main game loop
+			var main = function () {
+				var now = Date.now();
+
+				render();
+
+				// Request to do this again ASAP
+				requestAnimationFrame(main);
+			};
+
+			// Let's play this game!
+			var then = Date.now();
+			$( document ).ready(function() {
+			    console.log( "ready!" );
+				// reset();
+				main();
+			});
+
+
+		</script>
+
+
+	</body>
+</html>
