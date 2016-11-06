@@ -7,6 +7,9 @@ from base.forms import UserProfileForm
 def index(request):
     return render(request, 'base.html')
 
+def game(request):
+    return render(request, 'base/game.html')
+
 def register(request):
 
     registered = False
@@ -31,4 +34,3 @@ def register(request):
                   "base/dummy_register.html",
                   {'profile_form': profile_form,
                    'registered': registered})
-
