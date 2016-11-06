@@ -5,10 +5,39 @@
 <html>
 	<head>
 		<!-- <title>Dynamic Quiz Project</title> -->
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Code for good project</title>
+	    <link rel="stylesheet" type="text/css" href="{% static "css/styles.min.css"%}">
+	    <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
 		<link type='text/css' rel='stylesheet' href={%static "css/stylesheet.css"%}/>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans"/>
 	</head>
 	<body>
+
+		<!-- Button trigger modal -->
+		<button onclick="myFunction()" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+		  Instructions
+		</button>
+
+		<!-- Modal -->
+		<div style="z-index:10;" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+		      </div>
+		      <div class="modal-body">
+		        ...
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
 		<div id='container'>
 			<div id='title'>
 				<!-- <h1>Learning Js Properly: Project #1 - Dynamic Quiz</h1> -->
@@ -23,35 +52,46 @@
     		<button class='' id='start'> Start Over</a></button> -->
     	</div>
 
+
+		<script>
+			function myFunction() {
+    			alert("Hi ! \n Check out this cool game.\n Spot the mistakes.");
+			}
+		</script>
+
+
 		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
 		<!-- <script type="text/javascript" src='questions.json'></script> -->
 		<script type='text/javascript' src={%static "js/game.js"%}></script>
 		<script>
+
+
+
 		(function() {
 		  var questions = [{
 			question: "What is 2*5?",
 			image01 : new Image(),
 			src : "{%static "img/7.jpg"%}",
 			imageCaption : "Image caption for image-02",
-			choices: [2, 5, 10, 15, 20],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 2
 		  }, {
 			question: "What is 3*6?",
 			image01 : new Image(),
 			src : "{%static "img/2.jpg"%}",
-			choices: [3, 6, 9, 12, 18],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 4
 		  }, {
 			question: "What is 8*9?",
 			image01 : new Image(),
 			src : "{%static "img/3.jpg"%}",
-			choices: [72, 99, 108, 134, 156],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 0
 		  }, {
 			question: "What is 1*7?",
 			image01 : new Image(),
 			src : "{%static "img/4.jpg"%}",
-			choices: [4, 5, 6, 7, 8],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 3
 		  }, {
 			question: "What is 8*8?",
@@ -63,67 +103,67 @@
 			question: "What is 8*8?",
 			image01 : new Image(),
 			src : "{%static "img/6.jpg"%}",
-			choices: [20, 30, 40, 50, 64],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 4
 		  }, {
 			question: "What is 8*8?",
 			image01 : new Image(),
 			src : "{%static "img/7.jpg"%}",
-			choices: [20, 30, 40, 50, 64],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 4
 		  }, {
 			question: "What is 8*8?",
 			image01 : new Image(),
 			src : "{%static "img/8.jpg"%}",
-			choices: [20, 30, 40, 50, 64],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 4
 		  }, {
 			question: "What is 8*8?",
 			image01 : new Image(),
 			src : "{%static "img/9.jpg"%}",
-			choices: [20, 30, 40, 50, 64],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 4
 		  }, {
 			question: "What is 8*8?",
 			image01 : new Image(),
 			src : "{%static "img/10.jpg"%}",
-			choices: [20, 30, 40, 50, 64],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 4
 		  }, {
 			question: "What is 8*8?",
 			image01 : new Image(),
 			src : "{%static "img/11.jpg"%}",
-			choices: [20, 30, 40, 50, 64],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 4
 		  }, {
 			question: "What is 8*8?",
 			image01 : new Image(),
 			src : "{%static "img/0.jpg"%}",
-			choices: [20, 30, 40, 50, 64],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 4
 		  }, {
 			question: "What is 8*8?",
 			image01 : new Image(),
 			src : "{%static "img/12.jpg"%}",
-			choices: [20, 30, 40, 50, 64],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 4
 		  }, {
 			question: "What is 8*8?",
 			image01 : new Image(),
 			src : "{%static "img/13.jpg"%}",
-			choices: [20, 30, 40, 50, 64],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 4
 		  }, {
 			question: "What is 8*8?",
 			image01 : new Image(),
 			src : "{%static "img/14.jpg"%}",
-			choices: [20, 30, 40, 50, 64],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 4
 		  }, {
 			question: "What is 8*8?",
 			image01 : new Image(),
 			src : "{%static "img/15.jpg"%}",
-			choices: [20, 30, 40, 50, 64],
+			choices: [0, 1, 2, 3, 4],
 			correctAnswer: 4
 		  }];
 
@@ -274,7 +314,6 @@
 			return score;
 		  }
 		})();
-
 
 
 
