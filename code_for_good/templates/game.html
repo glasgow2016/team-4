@@ -1,10 +1,9 @@
-
-
 <html>
 
 	<head>
         <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 		<script src="https://code.createjs.com/easeljs-0.8.2.min.js">  </script>
+
 
 	</head>
     <body>
@@ -15,10 +14,7 @@
 			var ctx = canvas.getContext("2d");
 			canvas.width = 512;
 			canvas.height = 480;
-
-
 			document.body.appendChild(canvas);
-
 
 
 
@@ -38,10 +34,17 @@
 			};
 			driverImage.src = "driver.jpg";
 
+			// person image
+			var yesnoReady = false;
+			var yesnoImage = new Image();
+			yesnoImage.onload = function () {
+				yesnoReady = true;
+			};
+			yesnoImage.src = "yeno.png";
+
 			// start image
 			var startReady = false;
 			var startImage = new Image();
-			canvas.addEventListener('click', function() { console.log("test");}, false);
 			startImage.onload = function () {
 				startReady = true;
 			};
@@ -58,7 +61,25 @@
 				y: 40
 			};
 
+			var yesno = {
+				x: 400,
+				y: 410
+			};
 
+
+			canvas.addEventListener('click', dothething, false);
+			function dothething(event){
+				canvas_x = event.pageX;
+				canvas_y = event.pageY;
+				if((canvas_x > 146 && canvas_x < 383) && (canvas_y > 71 && canvas_y < 432)){
+					// alert('clicked inside the note');
+					canvas.removeEventListener('click', dothething);
+					ctx.drawImage(bgImage, 0, 0);
+					if (yesnoReady) {
+						ctx.drawImage(yesnoImage, yesno.x, yesno.y, 96, 48);
+					}
+				}
+			}
 
 			// Draw everything
 			var render = function () {
@@ -69,7 +90,9 @@
 				if (startReady) {
 					ctx.drawImage(startImage, start.x, start.y);
 
-				};
+				}
+
+
 
 				// if (driverReady) {
 				// 	ctx.drawImage(driverImage, driver.x, driver.y);
@@ -81,11 +104,9 @@
 
 				render();
 
-				requestAnimationFrame(main);
+				// requestAnimationFrame(main);
 			};
 
-
-			var then = Date.now();
 			$( document ).ready(function() {
 			    console.log( "ready!" );
 				main();
